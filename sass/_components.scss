@@ -296,10 +296,18 @@
     padding-bottom: 2px;
     background-color: transparent;
     transition: all 0.24s;
-    
 
+    & span {
+        margin-left: 3px;
+        transition: margin-left 0.25s;
+    }
+    
     &:hover {
         color: $Grey-dark-1;
+
+        span {
+            margin-left: 8px;
+        }
     }
 
     &:focus {
@@ -382,7 +390,7 @@
         border: 0.3rem solid #fff;
 
         &:not(:last-child) {
-            margin-right: -1.5rem;
+            margin-right: -2rem;
         }
     }
 }
@@ -392,22 +400,25 @@
 // User Reviews
 
 .review {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     background-color: #fff;
     box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.12);
     padding: 3rem;
     margin-bottom: 3.5rem;
+    overflow: hidden;
 
     &__text {
         font-size: 1.4rem;
         flex: 0 0 100%;
         margin-bottom: 2.5rem;
+        z-index: 10;
     }
 
     &__photo {
-        height: 6rem;
-        width: 6rem;
+        height: 5rem;
+        width: 5rem;
         border-radius: 50%;
         margin-right: 2rem;
     }
@@ -416,6 +427,19 @@
         font-size: 1.8rem;
         color: $Primary;
     }
+
+    &::before {
+        content: "\201C";
+        position: absolute;
+        top: -2.4rem;
+        left: -0.8rem;
+        line-height: 1;
+        font-size: 20rem;
+        color: $Grey-light-2;
+        font-family: sans-serif;
+        z-index: 1;
+    }
+
 }
 
 .review__user {
@@ -435,4 +459,78 @@
     &-date {
         font-size: 1.1rem;
     }
+}
+
+.user-reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & button {
+        font-size: 1.4rem;
+    }
+    
+}
+
+
+////////////////////////////////////
+// Call To Action
+
+.cta {
+    padding: 3.5rem 0;
+    text-align: center;
+
+    &__book-now {
+        font-size: 2rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+    }
+}
+
+////////////////////////////////////
+// Call To Action BUTTON
+
+.btn {
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    border-radius: 100px;
+    border: none;
+    background-image: linear-gradient(to right, $Primary-light, $Primary-dark);
+    color: #fff;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+
+    &__visible {
+        display: inline-block;
+        padding: 2rem 7.5rem;
+        transition: all 0.25s;
+    }
+
+    &__invisible {
+        display: inline-block;
+        position: absolute;
+        padding: 2rem 0;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: -100%;
+        transition: all 0.25s;
+    }
+
+    &:hover &__invisible {
+        top: 0;
+    }
+
+    &:hover &__visible {
+        transform: translateY(100%);
+    }
+
+
 }
